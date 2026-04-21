@@ -179,7 +179,7 @@ Create `.env.local` (not committed):
 ```
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_GA_ID=G_XXXXX
-FORMSPREE_ENDPOINT=https://...
+NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://...
 ```
 
 Use in code:

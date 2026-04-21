@@ -112,7 +112,7 @@ EASING.EASE_OUT           // cubic-bezier(0.16, 1, 0.3, 1)
 
 2. **Build Settings** (already configured in netlify.toml)
    - Build command: `npm run build`
-   - Publish directory: `.next`
+   - Next.js runtime handled by Netlify plugin
 
 3. **Environment Variables** (if needed)
    - Add any API keys via Netlify UI
@@ -177,17 +177,12 @@ Netlify configuration includes:
 
 The contact form currently shows a success/error message but doesn't actually send emails. To enable submissions:
 
-### Option 1: Netlify Forms (Recommended)
-- Form already has `netlify` attribute
-- Enable on Netlify dashboard → Form Settings
-- Submissions appear in Netlify UI
-
-### Option 2: Formspree
+### Option 1: Formspree (Recommended)
 - Create account at formspree.io
-- Update form action to your Formspree endpoint
-- Add hidden `_redirect` field
+- Add `NEXT_PUBLIC_FORMSPREE_ENDPOINT` in `.env.local`
+- Form in Contact.tsx already submits to Formspree
 
-### Option 3: Custom Backend
+### Option 2: Custom Backend
 - Set up API endpoint (e.g., Resend, SendGrid)
 - Update handleSubmit in Contact.tsx
 

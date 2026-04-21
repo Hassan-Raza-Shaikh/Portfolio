@@ -45,18 +45,19 @@ export default function Experience() {
   }, []);
 
   return (
-    <section id="experience" className="py-20 md:py-32 bg-gradient-to-b from-dark to-dark/50">
+    <section id="experience" className="py-20 md:py-32 bg-gradient-to-b from-dark via-ink to-dark">
       <div className="container-wide">
-        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-gradient">Experience</h2>
+        <p className="section-kicker mb-4 text-xs md:text-sm">Timeline / Roles / Momentum</p>
+        <h2 className="section-title text-4xl md:text-6xl mb-16 text-gradient">Experience</h2>
 
         <div ref={containerRef} className="relative pl-8 md:pl-0">
           {/* Timeline line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent via-accent to-purple-500 transform -translate-x-1/2">
-            <div className="timeline-connector absolute left-1/2 top-0 w-0.5 bg-gradient-to-b from-accent to-purple-500 transform -translate-x-1/2" style={{ height: '0%' }} />
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-white/10">
+            <div className="timeline-connector absolute left-1/2 top-0 w-px -translate-x-1/2 bg-gradient-to-b from-brass via-ember to-jade" style={{ height: '0%' }} />
           </div>
 
           {/* Mobile timeline */}
-          <div className="md:hidden absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent to-purple-500" />
+          <div className="md:hidden absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-brass to-jade" />
 
           <div className="space-y-12">
             {portfolioData.experience.map((exp, idx) => (
@@ -67,28 +68,28 @@ export default function Experience() {
                 }`}
               >
                 {/* Timeline dot */}
-                <div className="absolute -left-8 md:absolute md:left-1/2 top-0 md:top-4 w-4 h-4 md:w-5 md:h-5 bg-accent rounded-full border-4 border-dark transform md:-translate-x-1/2">
-                  <div className="absolute inset-0 bg-accent rounded-full animate-pulse opacity-75" />
+                <div className="absolute -left-8 md:absolute md:left-1/2 top-0 md:top-4 h-4 w-4 rounded-full border border-paper/15 bg-brass transform md:-translate-x-1/2 md:h-5 md:w-5">
+                  <div className="absolute inset-0 rounded-full bg-brass/40 animate-pulse opacity-75" />
                 </div>
 
                 {/* Content */}
-                <div className={`p-6 bg-white/5 rounded-lg border border-white/10 hover:border-accent/50 transition-all ${idx % 2 === 1 ? 'md:col-start-2' : ''}`}>
+                <div className={`luxury-card rounded-[1.75rem] p-6 transition-all duration-300 ${idx % 2 === 1 ? 'md:col-start-2' : ''}`}>
                   <div className="flex items-start justify-between mb-2">
                     <div>
-                      <h3 className="text-xl font-bold text-accent">{exp.title}</h3>
-                      <p className="text-gray-400">{exp.company}</p>
+                      <h3 className="font-display text-2xl text-brass">{exp.title}</h3>
+                      <p className="text-sm text-sand/70">{exp.company}</p>
                     </div>
-                    <span className="text-sm text-gray-500 whitespace-nowrap ml-4">
+                    <span className="ml-4 whitespace-nowrap text-xs uppercase tracking-[0.2em] text-sand/45">
                       {exp.period}
                     </span>
                   </div>
 
-                  <p className="text-gray-300 mb-4">{exp.description}</p>
+                  <p className="mb-4 text-paper/76">{exp.description}</p>
 
                   <ul className="space-y-2">
                     {exp.highlights.map((highlight, hIdx) => (
-                      <li key={hIdx} className="text-gray-400 text-sm flex items-start gap-2">
-                        <span className="text-accent mt-1">→</span>
+                      <li key={hIdx} className="flex items-start gap-2 text-sm text-paper/65">
+                        <span className="mt-1 text-brass">→</span>
                         <span>{highlight}</span>
                       </li>
                     ))}

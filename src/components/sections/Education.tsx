@@ -65,9 +65,9 @@ export default function Education() {
           ))}
         </div>
 
-        {/* Certifications */}
+        {/* Certifications & Learning */}
         <div className="mt-20">
-          <h3 className="text-2xl font-bold mb-8 text-accent">Certifications</h3>
+          <h3 className="text-2xl font-bold mb-8 text-accent">Certifications & Learning</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {portfolioData.certifications.map((cert, idx) => (

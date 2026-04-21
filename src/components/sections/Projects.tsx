@@ -53,16 +53,17 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-20 bg-dark">
+    <section id="projects" className="py-20 bg-gradient-to-b from-dark via-ink to-dark">
       <div className="container-wide mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-gradient">Featured Projects</h2>
-        <p className="text-gray-400 mt-4 max-w-xl">
+        <p className="section-kicker mb-4 text-xs md:text-sm">Selected work / Case studies / Play</p>
+        <h2 className="section-title text-4xl md:text-6xl text-gradient">Featured Projects</h2>
+        <p className="mt-4 max-w-xl text-paper/70">
           Scroll horizontally to explore my latest work. Each project showcases my expertise in full-stack development and creative animation.
         </p>
       </div>
 
       {/* Horizontal scroll container */}
-      <div ref={containerRef} className="relative w-full overflow-hidden bg-gradient-to-b from-dark via-dark to-dark/80">
+      <div ref={containerRef} className="relative w-full overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.02),transparent_22%,transparent_78%,rgba(255,255,255,0.03))]">
         <div
           ref={trackRef}
           className="flex gap-8 px-8 md:px-16 py-12 will-change-transform"
@@ -70,29 +71,29 @@ export default function Projects() {
           {portfolioData.projects.map((project) => (
             <div
               key={project.id}
-              className="project-card flex-shrink-0 w-96 bg-white/5 border border-white/10 rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300 group"
+              className="project-card luxury-card flex-shrink-0 w-[24rem] overflow-hidden rounded-[2rem] transition-all duration-300 group hover:-translate-y-1"
             >
               {/* Image */}
-              <div className="relative h-56 bg-gradient-to-br from-accent/20 to-purple-500/20 overflow-hidden">
+              <div className="relative h-56 overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(197,138,58,0.24),transparent_30%),radial-gradient(circle_at_80%_24%,rgba(60,111,102,0.18),transparent_26%),linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))]">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-6xl opacity-30">🖼️</div>
+                  <div className="text-6xl opacity-25 animate-float-slow">◐</div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(0,0,0,0.06),rgba(0,0,0,0.36))] opacity-70 transition-opacity group-hover:opacity-100" />
               </div>
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                <h3 className="font-display text-2xl mb-2 text-paper transition-colors group-hover:text-brass">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 text-sm mb-4">{project.description}</p>
+                <p className="mb-4 text-sm leading-7 text-paper/72">{project.description}</p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.slice(0, 3).map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-2 py-1 text-xs bg-accent/10 text-accent rounded"
+                      className="rounded-full border border-paper/10 bg-paper/6 px-3 py-1 text-[0.62rem] uppercase tracking-[0.2em] text-sand/75"
                     >
                       {tag}
                     </span>
@@ -100,13 +101,13 @@ export default function Projects() {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-3 pt-4 border-t border-white/10">
+                <div className="flex gap-3 border-t border-paper/10 pt-4">
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 text-center py-2 text-sm bg-accent/10 text-accent hover:bg-accent hover:text-white transition-colors rounded"
+                      className="flex-1 rounded-full border border-brass/30 bg-brass/10 py-2 text-center text-sm text-paper transition-all hover:border-brass/50 hover:bg-brass/18"
                     >
                       Live Demo
                     </a>
@@ -116,7 +117,7 @@ export default function Projects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 text-center py-2 text-sm bg-white/5 text-gray-300 hover:bg-white/10 transition-colors rounded"
+                      className="flex-1 rounded-full border border-paper/10 bg-paper/6 py-2 text-center text-sm text-paper/80 transition-all hover:border-paper/20 hover:bg-paper/10"
                     >
                       GitHub
                     </a>

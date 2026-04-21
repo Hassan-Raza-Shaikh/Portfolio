@@ -9,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Skills() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const skillRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -48,25 +47,26 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" className="py-20 md:py-32 bg-dark">
+    <section id="skills" className="py-20 md:py-32 bg-gradient-to-b from-dark via-ink to-dark">
       <div className="container-wide">
-        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-gradient">Skills & Expertise</h2>
+        <p className="section-kicker mb-4 text-xs md:text-sm">Capabilities / Tools / Range</p>
+        <h2 className="section-title text-4xl md:text-6xl mb-16 text-gradient">Skills & Expertise</h2>
 
         <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {portfolioData.skills.map((skillGroup, idx) => (
-            <div key={idx} className="skill-card p-6 bg-white/5 rounded-lg border border-white/10 hover:border-accent/50 transition-colors">
-              <h3 className="text-xl font-semibold mb-6 text-accent">{skillGroup.category}</h3>
+            <div key={idx} className="skill-card luxury-card rounded-[1.75rem] p-6 transition-all duration-300">
+              <h3 className="mb-6 text-xl font-semibold text-paper">{skillGroup.category}</h3>
               <div className="space-y-4">
                 {skillGroup.items.map((skill, skillIdx) => (
                   <div key={skillIdx}>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-300">{skill}</span>
-                      <span className="text-sm text-gray-500">90%</span>
+                      <span className="text-paper/80">{skill}</span>
+                      <span className="text-xs uppercase tracking-[0.22em] text-sand/45">90%</span>
                     </div>
-                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-2 w-full overflow-hidden rounded-full bg-paper/8">
                       <div
-                        className="skill-bar-fill h-full bg-gradient-to-r from-accent to-purple-500 rounded-full"
-                        data-width={85 + Math.random() * 15}
+                        className="skill-bar-fill h-full rounded-full bg-gradient-to-r from-brass via-ember to-jade"
+                        data-width={85 + ((idx * 7 + skillIdx * 5) % 11)}
                         style={{ width: '0%' }}
                       />
                     </div>
@@ -78,18 +78,18 @@ export default function Skills() {
         </div>
 
         {/* Proficiency levels */}
-        <div className="mt-16 grid grid-cols-3 gap-4 md:gap-8">
-          <div className="text-center p-6 bg-white/5 rounded-lg">
-            <p className="text-3xl font-bold text-accent mb-2">Expert</p>
-            <p className="text-gray-400 text-sm">React, Next.js, TypeScript</p>
+        <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
+          <div className="luxury-card rounded-[1.5rem] p-6 text-center">
+            <p className="font-display text-3xl text-brass mb-2">Expert</p>
+            <p className="text-sm text-sand/70">React, Next.js, TypeScript</p>
           </div>
-          <div className="text-center p-6 bg-white/5 rounded-lg">
-            <p className="text-3xl font-bold text-accent mb-2">Advanced</p>
-            <p className="text-gray-400 text-sm">Node.js, PostgreSQL, AWS</p>
+          <div className="luxury-card rounded-[1.5rem] p-6 text-center">
+            <p className="font-display text-3xl text-ember mb-2">Advanced</p>
+            <p className="text-sm text-sand/70">Node.js, PostgreSQL, AWS</p>
           </div>
-          <div className="text-center p-6 bg-white/5 rounded-lg">
-            <p className="text-3xl font-bold text-accent mb-2">Proficient</p>
-            <p className="text-gray-400 text-sm">Docker, GraphQL, DevOps</p>
+          <div className="luxury-card rounded-[1.5rem] p-6 text-center">
+            <p className="font-display text-3xl text-jade mb-2">Proficient</p>
+            <p className="text-sm text-sand/70">Docker, GraphQL, DevOps</p>
           </div>
         </div>
       </div>
