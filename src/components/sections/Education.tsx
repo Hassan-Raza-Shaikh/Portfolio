@@ -31,7 +31,7 @@ export default function Education() {
   return (
     <section id="education" className="py-20 md:py-32 bg-dark">
       <div className="container-wide">
-        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-gradient">Education</h2>
+        <h2 data-heading-reveal="words" className="section-title text-4xl md:text-5xl font-bold mb-16 text-gradient">Education</h2>
 
         <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {portfolioData.education.map((edu, idx) => (

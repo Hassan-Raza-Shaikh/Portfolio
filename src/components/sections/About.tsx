@@ -45,7 +45,7 @@ export default function About() {
     <section id="about" className="py-20 md:py-32 bg-gradient-to-b from-dark via-ink to-dark">
       <div className="container-wide">
         <p className="section-kicker mb-4 text-xs md:text-sm">Profile / Background / Intent</p>
-        <h2 className="section-title text-4xl md:text-6xl mb-16 text-gradient">About Me</h2>
+        <h2 data-heading-reveal="words" className="section-title text-4xl md:text-6xl mb-16 text-gradient">About Me</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Image */}

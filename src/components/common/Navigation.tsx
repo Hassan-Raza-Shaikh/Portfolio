@@ -85,7 +85,7 @@ export default function Navigation() {
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`rounded-full px-4 py-2 text-[0.72rem] uppercase tracking-[0.2em] transition-all duration-300 ${
+                className={`pressable rounded-full px-4 py-2 text-[0.72rem] uppercase tracking-[0.2em] transition-all duration-300 ${
                   activeSection === item.id
                     ? 'bg-paper text-ink shadow-[0_8px_24px_rgba(0,0,0,0.18)]'
                     : 'text-sand/70 hover:bg-paper/8 hover:text-paper'
@@ -123,7 +123,7 @@ export default function Navigation() {
                   key={item.id}
                   type="button"
                   onClick={() => handleNavClick(item.id)}
-                  className={`rounded-xl px-3 py-3 text-[0.72rem] uppercase tracking-[0.2em] transition-all duration-200 active:scale-[0.98] ${
+                  className={`pressable rounded-xl px-3 py-3 text-[0.72rem] uppercase tracking-[0.2em] transition-all duration-200 active:scale-[0.98] ${
                     activeSection === item.id
                       ? 'bg-paper text-ink'
                       : 'border border-paper/10 bg-paper/5 text-sand/80'

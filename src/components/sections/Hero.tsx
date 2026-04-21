@@ -103,9 +103,9 @@ export default function Hero() {
   return (
     <section id="hero" ref={heroRef} className="relative min-h-screen overflow-hidden bg-dark">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute left-[8%] top-20 h-96 w-96 rounded-full bg-brass/15 blur-3xl animate-drift" />
-        <div className="absolute right-[6%] top-32 h-80 w-80 rounded-full bg-jade/15 blur-3xl animate-float-slow" />
-        <div className="absolute bottom-[-8rem] left-1/4 h-[26rem] w-[26rem] rounded-full bg-ember/10 blur-3xl animate-drift" />
+        <div data-pause-offscreen="1" className="absolute left-[8%] top-20 h-96 w-96 rounded-full bg-brass/15 blur-3xl animate-drift" />
+        <div data-pause-offscreen="1" className="absolute right-[6%] top-32 h-80 w-80 rounded-full bg-jade/15 blur-3xl animate-float-slow" />
+        <div data-pause-offscreen="1" className="absolute bottom-[-8rem] left-1/4 h-[26rem] w-[26rem] rounded-full bg-ember/10 blur-3xl animate-drift" />
         <div className="absolute inset-x-0 top-1/3 mx-auto h-px w-[78%] surface-line opacity-30" />
         <div className="absolute inset-0 bg-[linear-gradient(130deg,transparent_0%,rgba(255,255,255,0.02)_45%,transparent_70%)] opacity-50" />
       </div>
@@ -114,7 +114,7 @@ export default function Hero() {
         <div className="grid w-full grid-cols-1 gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
           <div className="max-w-4xl">
             <p className="hero-reveal section-kicker mb-5 text-xs md:text-sm">Portfolio / Creative systems / Scroll choreography</p>
-            <h1 ref={titleRef} className="section-title text-6xl leading-[0.9] md:text-8xl lg:text-[7.8rem]">
+            <h1 ref={titleRef} data-heading-reveal="words" className="section-title text-6xl leading-[0.9] md:text-8xl lg:text-[7.8rem]">
               <span className="hero-reveal block text-paper/90">Hi, I'm</span>
               <span className="hero-reveal block text-gradient">{portfolioData.name}</span>
             </h1>
@@ -132,13 +132,13 @@ export default function Hero() {
             <div ref={ctaRef} className="mt-10 flex flex-col gap-4 sm:flex-row">
               <button
                 onClick={() => handleScroll('projects')}
-                className="magnetic-button rounded-full px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] transition-transform duration-300 hover:-translate-y-0.5"
+                className="magnetic-button cta-button pressable rounded-full px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] transition-transform duration-300 hover:-translate-y-0.5"
               >
                 Explore Work
               </button>
               <button
                 onClick={() => handleScroll('contact')}
-                className="rounded-full border border-paper/15 bg-paper/5 px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-all duration-300 hover:-translate-y-0.5 hover:border-brass/40 hover:bg-paper/10"
+                className="cta-button pressable rounded-full border border-paper/15 bg-paper/5 px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-all duration-300 hover:-translate-y-0.5 hover:border-brass/40 hover:bg-paper/10"
               >
                 Start a Project
               </button>
@@ -148,7 +148,7 @@ export default function Hero() {
           <div ref={panelRef} className="relative lg:justify-self-end lg:max-w-xl">
             <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-brass/15 via-transparent to-jade/10 blur-2xl" />
             <div className="luxury-card relative overflow-hidden rounded-[2rem] p-6 md:p-8">
-              <div ref={orbitRef} className="absolute right-6 top-6 h-24 w-24 rounded-full border border-paper/10 bg-paper/5 p-4 text-sand/70 backdrop-blur-md">
+              <div ref={orbitRef} data-pause-offscreen="1" className="absolute right-6 top-6 h-24 w-24 rounded-full border border-paper/10 bg-paper/5 p-4 text-sand/70 backdrop-blur-md">
                 <Motif variant="orbit" className="h-full w-full" />
               </div>
               <div className="relative space-y-6">

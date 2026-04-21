@@ -70,7 +70,7 @@ export default function Contact() {
     <section id="contact" className="py-20 md:py-32 bg-gradient-to-b from-dark via-ink to-dark">
       <div className="container-wide">
         <p className="section-kicker mb-4 text-center text-xs md:text-sm">Contact / Collaboration / Availability</p>
-        <h2 className="section-title text-center text-4xl md:text-6xl mb-8 text-gradient">
+        <h2 data-heading-reveal="words" className="section-title text-center text-4xl md:text-6xl mb-8 text-gradient">
           Let's Work Together
         </h2>
         <p className="mx-auto mb-16 max-w-2xl text-center text-paper/70">
@@ -177,7 +177,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="magnetic-button w-full rounded-full py-3 font-semibold uppercase tracking-[0.18em] transition-all disabled:cursor-not-allowed disabled:opacity-50"
+              className="magnetic-button cta-button pressable w-full rounded-full py-3 font-semibold uppercase tracking-[0.18em] transition-all disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>

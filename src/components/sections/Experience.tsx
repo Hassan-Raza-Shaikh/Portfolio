@@ -48,7 +48,7 @@ export default function Experience() {
     <section id="experience" className="py-20 md:py-32 bg-gradient-to-b from-dark via-ink to-dark">
       <div className="container-wide">
         <p className="section-kicker mb-4 text-xs md:text-sm">Timeline / Roles / Momentum</p>
-        <h2 className="section-title text-4xl md:text-6xl mb-16 text-gradient">Experience</h2>
+        <h2 data-heading-reveal="words" className="section-title text-4xl md:text-6xl mb-16 text-gradient">Experience</h2>
 
         <div ref={containerRef} className="relative pl-8 md:pl-0">
           {/* Timeline line */}

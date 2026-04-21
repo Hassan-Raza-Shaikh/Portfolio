@@ -80,11 +80,23 @@ body > * {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 120ms !important;
   }
 
   html {
     scroll-behavior: auto;
+  }
+
+  .ambient-root,
+  .transition-wave,
+  .transition-glow,
+  .transition-motif {
+    display: none !important;
+  }
+
+  .pressable:active,
+  .magnetic-button:active {
+    transform: none;
   }
 }
 
@@ -302,6 +314,64 @@ body > * {
 
 .surface-line {
   background: linear-gradient(90deg, transparent, rgba(245, 238, 227, 0.3), transparent);
+}
+
+.pressable {
+  transition: transform 120ms ease, filter 120ms ease, border-color 220ms ease;
+}
+
+.pressable:active {
+  transform: scale(0.985);
+  filter: brightness(1.04);
+}
+
+.cta-button {
+  position: relative;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.25), transparent 50%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.cta-button:hover::before,
+.cta-button:focus-visible::before {
+  opacity: 1;
+}
+
+.ambient-blend {
+  background:
+    radial-gradient(circle at calc(var(--pointer-x) * 1%) calc(var(--pointer-y) * 1%), rgba(197, 138, 58, 0.24), transparent 28%),
+    radial-gradient(circle at calc((100 - var(--pointer-x)) * 1%) calc((100 - var(--pointer-y)) * 1%), rgba(60, 111, 102, 0.2), transparent 24%),
+    radial-gradient(circle at 50% calc((18 + var(--scroll-depth) * 48) * 1%), rgba(180, 75, 45, 0.16), transparent 30%);
+  transition: opacity 300ms ease;
+}
+
+.ambient-grain {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 120px 120px;
+  opacity: 0.14;
+}
+
+[data-pause-offscreen='1'].is-offscreen {
+  animation-play-state: paused !important;
+}
+
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
+
+#hero {
+  content-visibility: visible;
 }
 
 /* Container utilities */

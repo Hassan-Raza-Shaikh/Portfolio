@@ -180,7 +180,7 @@ export default function ProcessRail() {
     <section id="process-rail" ref={sectionRef} className="relative overflow-hidden py-16 md:py-20">
       <div className="container-wide mb-8">
         <p className="section-kicker mb-4 text-xs md:text-sm">Editorial rail / Process / Signature</p>
-        <h2 className="section-title text-4xl md:text-6xl text-gradient">How I Shape A Build</h2>
+        <h2 data-heading-reveal="words" className="section-title text-4xl md:text-6xl text-gradient">How I Shape A Build</h2>
       </div>
 
       <p className="container-wide mb-4 text-xs uppercase tracking-[0.24em] text-sand/45 lg:hidden">
