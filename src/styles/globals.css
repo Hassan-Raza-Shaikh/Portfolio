@@ -1,17 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --bg: #120f0e;
-  --bg-elevated: rgba(245, 238, 227, 0.06);
-  --bg-elevated-strong: rgba(245, 238, 227, 0.12);
-  --text: #f3eadf;
-  --muted: rgba(243, 234, 223, 0.72);
-  --accent: #c58a3a;
-  --accent-2: #b44b2d;
-  --accent-3: #3c6f66;
-  --border: rgba(216, 197, 170, 0.16);
+  --bg: #08070b;
+  --bg-elevated: rgba(255, 255, 255, 0.03);
+  --bg-elevated-strong: rgba(255, 255, 255, 0.07);
+  --text: #f5f5fa;
+  --muted: rgba(245, 245, 250, 0.65);
+  --accent: #ff3b70;      /* Electric Pink */
+  --accent-2: #00ff87;    /* Neon Green / Lime */
+  --accent-3: #0ea5e9;    /* Sky Blue */
+  --border: rgba(255, 255, 255, 0.08);
+  
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Outfit', sans-serif;
 }
 
 * {
@@ -27,12 +32,12 @@ html {
 
 body {
   background:
-    radial-gradient(circle at 18% 18%, rgba(197, 138, 58, 0.16), transparent 28%),
-    radial-gradient(circle at 82% 16%, rgba(180, 75, 45, 0.12), transparent 22%),
-    radial-gradient(circle at 72% 78%, rgba(60, 111, 102, 0.13), transparent 26%),
-    linear-gradient(180deg, #171211 0%, #120f0e 48%, #100d0c 100%);
+    radial-gradient(circle at 18% 18%, rgba(255, 59, 112, 0.15), transparent 28%),
+    radial-gradient(circle at 82% 16%, rgba(0, 255, 135, 0.12), transparent 22%),
+    radial-gradient(circle at 72% 78%, rgba(14, 165, 233, 0.14), transparent 26%),
+    linear-gradient(180deg, #0d0b12 0%, #08070b 48%, #050407 100%);
   color: var(--text);
-  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
@@ -46,11 +51,11 @@ body::before {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 20% 20%, rgba(197, 138, 58, 0.18), transparent 24%),
-    radial-gradient(circle at 80% 14%, rgba(60, 111, 102, 0.16), transparent 20%),
-    radial-gradient(circle at 72% 74%, rgba(180, 75, 45, 0.12), transparent 24%);
-  filter: blur(28px);
-  opacity: 0.8;
+    radial-gradient(circle at 20% 20%, rgba(255, 59, 112, 0.18), transparent 25%),
+    radial-gradient(circle at 80% 14%, rgba(14, 165, 233, 0.16), transparent 22%),
+    radial-gradient(circle at 72% 74%, rgba(0, 255, 135, 0.12), transparent 24%);
+  filter: blur(40px);
+  opacity: 0.85;
   z-index: 0;
 }
 
@@ -60,11 +65,11 @@ body::after {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 140px 140px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 92%);
-  opacity: 0.18;
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100px 100px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6), transparent 95%);
+  opacity: 0.25;
   z-index: 0;
 }
 
@@ -106,31 +111,27 @@ body > * {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(245, 238, 227, 0.05);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #c58a3a, #b44b2d);
+  background: linear-gradient(180deg, var(--accent), var(--accent-3));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #d29a46, #c75737);
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
 }
 
 ::selection {
-  background: rgba(197, 138, 58, 0.28);
-  color: #fff8ef;
+  background: rgba(255, 59, 112, 0.3);
+  color: #ffffff;
 }
 
 /* Base animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
@@ -144,152 +145,91 @@ body > * {
   }
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes drift {
-  0%,
-  100% {
+  0%, 100% {
     transform: translate3d(0, 0, 0) rotate(0deg);
   }
   50% {
-    transform: translate3d(0, -12px, 0) rotate(0.6deg);
+    transform: translate3d(0, -20px, 0) rotate(1deg) scale(1.05);
   }
 }
 
 @keyframes shimmer {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 @keyframes floatSlow {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-8px) rotate(0.35deg);
+    transform: translateY(-12px) rotate(-1deg) scale(1.03);
   }
 }
 
 /* Typography utilities */
 .text-gradient {
-  background: linear-gradient(135deg, #e2c48e 0%, #c58a3a 34%, #b44b2d 68%, #3c6f66 100%);
-  background-size: 220% 220%;
-  animation: shimmer 9s ease-in-out infinite;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 45%, var(--accent-3) 100%);
+  background-size: 200% 200%;
+  animation: shimmer 6s ease-in-out infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .font-display {
-  font-family: var(--font-display), 'Times New Roman', serif;
+  font-family: var(--font-display);
 }
 
 .section-title {
-  font-family: var(--font-display), 'Times New Roman', serif;
-  letter-spacing: -0.04em;
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  font-weight: 700;
 }
 
 .section-kicker {
-  letter-spacing: 0.35em;
+  font-family: var(--font-display);
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(243, 234, 223, 0.6);
+  font-weight: 600;
+  color: var(--accent);
 }
 
 .luxury-card {
-  background: linear-gradient(180deg, rgba(245, 238, 227, 0.08), rgba(245, 238, 227, 0.03));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
   border: 1px solid var(--border);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(18px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .luxury-card:hover {
-  border-color: rgba(197, 138, 58, 0.35);
-  transform: translateY(-2px);
+  border-color: rgba(255, 59, 112, 0.3);
+  box-shadow: 0 20px 50px rgba(255, 59, 112, 0.08);
+  transform: translateY(-4px);
 }
 
 .magnetic-button {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #c58a3a, #b44b2d 72%, #3c6f66 140%);
-  color: #fff7ee;
-  box-shadow: 0 16px 40px rgba(180, 75, 45, 0.24);
+  background: linear-gradient(135deg, var(--accent), var(--accent-3));
+  color: #ffffff;
+  box-shadow: 0 12px 35px rgba(255, 59, 112, 0.3);
 }
 
 .magnetic-button::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.22), transparent 48%);
+  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.25), transparent 48%);
   transform: translateX(-120%);
-  transition: transform 0.7s ease;
+  transition: transform 0.6s ease;
 }
 
 .magnetic-button:hover::after {
@@ -297,32 +237,31 @@ body > * {
 }
 
 .magnetic-button:active {
-  transform: translateY(1px) scale(0.99);
+  transform: translateY(1px) scale(0.98);
 }
 
 @media (hover: none) and (pointer: coarse) {
   .luxury-card:active {
     transform: translateY(0);
-    border-color: rgba(197, 138, 58, 0.42);
+    border-color: rgba(255, 59, 112, 0.4);
   }
 
   button:active,
   a:active {
-    transform: scale(0.99);
+    transform: scale(0.98);
   }
 }
 
 .surface-line {
-  background: linear-gradient(90deg, transparent, rgba(245, 238, 227, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
 }
 
 .pressable {
-  transition: transform 120ms ease, filter 120ms ease, border-color 220ms ease;
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), filter 150ms ease, border-color 200ms ease;
 }
 
 .pressable:active {
-  transform: scale(0.985);
-  filter: brightness(1.04);
+  transform: scale(0.975);
 }
 
 .cta-button {
@@ -334,9 +273,9 @@ body > * {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.25), transparent 50%);
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3), transparent 50%);
   opacity: 0;
-  transition: opacity 220ms ease;
+  transition: opacity 200ms ease;
   pointer-events: none;
 }
 
@@ -347,18 +286,18 @@ body > * {
 
 .ambient-blend {
   background:
-    radial-gradient(circle at calc(var(--pointer-x) * 1%) calc(var(--pointer-y) * 1%), rgba(197, 138, 58, 0.24), transparent 28%),
-    radial-gradient(circle at calc((100 - var(--pointer-x)) * 1%) calc((100 - var(--pointer-y)) * 1%), rgba(60, 111, 102, 0.2), transparent 24%),
-    radial-gradient(circle at 50% calc((18 + var(--scroll-depth) * 48) * 1%), rgba(180, 75, 45, 0.16), transparent 30%);
+    radial-gradient(circle at calc(var(--pointer-x) * 1%) calc(var(--pointer-y) * 1%), rgba(255, 59, 112, 0.2), transparent 28%),
+    radial-gradient(circle at calc((100 - var(--pointer-x)) * 1%) calc((100 - var(--pointer-y)) * 1%), rgba(0, 255, 135, 0.15), transparent 24%),
+    radial-gradient(circle at 50% calc((18 + var(--scroll-depth) * 48) * 1%), rgba(14, 165, 233, 0.15), transparent 30%);
   transition: opacity 300ms ease;
 }
 
 .ambient-grain {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 120px 120px;
-  opacity: 0.14;
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100px 100px;
+  opacity: 0.18;
 }
 
 [data-pause-offscreen='1'].is-offscreen {
@@ -377,9 +316,9 @@ section {
 /* Container utilities */
 .container-wide {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
 /* Scroll snap sections */

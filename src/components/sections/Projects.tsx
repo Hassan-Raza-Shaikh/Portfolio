@@ -8,20 +8,15 @@ import { portfolioData } from '@/lib/portfolioData';
 gsap.registerPlugin(ScrollTrigger);
 
 const previewContent: Record<string, { problem: string; approach: string; outcome: string }> = {
-  '1': {
-    problem: 'Growers lacked one workflow to monitor growth and harvesting readiness.',
-    approach: 'Built an authenticated full-stack app with upload flows and API-backed tracking.',
-    outcome: 'Created a practical dashboard for day-to-day plant monitoring and decision support.',
+  'study-portal': {
+    problem: 'GIKI students lacked a unified academic portal to access course files and resource documents, leading to high search times.',
+    approach: 'Built a centralized React dashboard with secure Firebase database architecture and efficient storage links.',
+    outcome: 'Successfully hosted over 50 resources and slashed academic resource retrieval times by 60% for students.',
   },
-  '2': {
-    problem: 'Video-first learning content remained inaccessible for many deaf learners.',
-    approach: 'Used speech-to-text plus LLM simplification and ASL gloss generation in one flow.',
-    outcome: 'Improved accessibility through transcript, gloss, and sign-oriented video outputs.',
-  },
-  '3': {
-    problem: 'Course and guide content needed structured, scalable publishing.',
-    approach: 'Designed a Quarto-based content system with notebook and documentation integration.',
-    outcome: 'Enabled scalable educational publishing with a cleaner authoring workflow.',
+  'iot-plant': {
+    problem: 'Real-time soil metrics and ambient light levels could not be visualized dynamically or processed cleanly from home.',
+    approach: 'Wrote Arduino scripts for hardware sensors, linked them to a Node.js web server, and built a live React chart interface.',
+    outcome: 'Designed a fully functional IoT monitoring workflow with stable API processing and reliable live charts.',
   },
 };
 
@@ -138,10 +133,10 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 bg-gradient-to-b from-dark via-ink to-dark">
       <div className="container-wide mb-12">
-        <p className="section-kicker mb-4 text-xs md:text-sm">Selected work / Case studies / Play</p>
+        <p className="section-kicker mb-4 text-xs md:text-sm">Selected work / Portals / Embedded systems</p>
         <h2 data-heading-reveal="words" className="section-title text-4xl md:text-6xl text-gradient">Featured Projects</h2>
         <p className="mt-4 max-w-xl text-paper/70">
-          Scroll horizontally to explore my latest work. Each project showcases my expertise in full-stack development and creative animation.
+          Scroll horizontally to explore my technical projects. Each card showcases engineering solutions combining AI concepts, web architecture, and IoT systems.
         </p>
       </div>
 

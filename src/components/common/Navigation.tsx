@@ -75,9 +75,9 @@ export default function Navigation() {
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-paper/10 bg-ink/72 backdrop-blur-2xl">
         <div className="container-wide flex items-center justify-between py-3 md:py-4">
           <Link href="/" className="flex items-center gap-3 text-paper">
-            <span className="font-display text-2xl tracking-[0.22em]">HR</span>
+            <span className="font-display text-2xl tracking-[0.22em] font-bold text-gradient">HRS</span>
             <span className="hidden sm:block text-[0.62rem] uppercase tracking-[0.32em] text-sand/70">
-              Motion portfolio
+              AI & Full-Stack Builder
             </span>
           </Link>
           <div className="hidden md:flex items-center gap-2 rounded-full border border-paper/10 bg-paper/5 px-2 py-1 backdrop-blur-xl">

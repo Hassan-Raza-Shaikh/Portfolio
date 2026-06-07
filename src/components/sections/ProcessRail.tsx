@@ -10,26 +10,26 @@ gsap.registerPlugin(ScrollTrigger);
 const steps = [
   {
     id: '01',
-    title: 'Narrative Frame',
-    text: 'Map product goals into a visual rhythm where hierarchy does as much work as copy.',
+    title: 'Algorithm Design',
+    text: 'Formulating optimal code logic using advanced data structures, OOP patterns, and machine learning models.',
     motif: 'orbit' as const,
   },
   {
     id: '02',
-    title: 'Motion Language',
-    text: 'Define transitions that reveal state changes and intent, not decorative noise.',
+    title: 'Hardware & IoT',
+    text: 'Interfacing Arduino microcontrollers with hardware sensors to capture plant and ambient data in real-time.',
     motif: 'weave' as const,
   },
   {
     id: '03',
-    title: 'Systems Build',
-    text: 'Convert patterns into reusable components with consistent behavior and tactile detail.',
+    title: 'Full-Stack Build',
+    text: 'Structuring real-time dashboards with React.js, configuring Node.js backends, and setting up Firebase database layers.',
     motif: 'crest' as const,
   },
   {
     id: '04',
-    title: 'Polish Loop',
-    text: 'Tune accessibility, pacing, and interaction nuance until the interface feels inevitable.',
+    title: 'Polish & Optimize',
+    text: 'Tuning API performance, optimizing database queries for 60% faster retrieval, and designing GenAI prompt workflows.',
     motif: 'pulse' as const,
   },
 ];

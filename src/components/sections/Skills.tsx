@@ -80,16 +80,16 @@ export default function Skills() {
         {/* Proficiency levels */}
         <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
           <div className="luxury-card rounded-[1.5rem] p-6 text-center">
-            <p className="font-display text-3xl text-brass mb-2">Expert</p>
-            <p className="text-sm text-sand/70">React, Next.js, TypeScript</p>
+            <p className="font-display text-3xl text-brass mb-2 font-bold">Expert</p>
+            <p className="text-sm text-sand/70">Python, React.js, C/C++</p>
           </div>
           <div className="luxury-card rounded-[1.5rem] p-6 text-center">
-            <p className="font-display text-3xl text-ember mb-2">Advanced</p>
-            <p className="text-sm text-sand/70">Node.js, PostgreSQL, AWS</p>
+            <p className="font-display text-3xl text-ember mb-2 font-bold">Advanced</p>
+            <p className="text-sm text-sand/70">Node.js, JavaScript, SQL, Firebase</p>
           </div>
           <div className="luxury-card rounded-[1.5rem] p-6 text-center">
-            <p className="font-display text-3xl text-jade mb-2">Proficient</p>
-            <p className="text-sm text-sand/70">Docker, GraphQL, DevOps</p>
+            <p className="font-display text-3xl text-jade mb-2 font-bold">Proficient</p>
+            <p className="text-sm text-sand/70">TensorFlow, NumPy, Arduino IDE, LaTeX</p>
           </div>
         </div>
       </div>

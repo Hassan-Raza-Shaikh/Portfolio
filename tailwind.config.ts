@@ -9,17 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        dark: '#0e0b0a',
-        ink: '#120f0e',
-        paper: '#f3eadf',
-        sand: '#d8c5aa',
-        brass: '#c58a3a',
-        ember: '#b44b2d',
-        plum: '#5d3a52',
-        jade: '#3c6f66',
-        accent: '#c58a3a',
-        surface: 'rgba(245, 238, 227, 0.06)',
-        surfaceStrong: 'rgba(245, 238, 227, 0.12)',
+        dark: '#08070b',
+        ink: '#0d0b12',
+        paper: '#f5f5fa',
+        sand: '#cbcbd6',
+        brass: '#ff3b70',      // Vibrant pink mapping
+        ember: '#00ff87',      // Neon lime mapping
+        jade: '#0ea5e9',       // Sky blue mapping
+        accent: '#ff3b70',
+        surface: 'rgba(255, 255, 255, 0.03)',
+        surfaceStrong: 'rgba(255, 255, 255, 0.07)',
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out',
@@ -44,7 +43,7 @@ const config: Config = {
         },
         drift: {
           '0%, 100%': { transform: 'translate3d(0, 0, 0) scale(1)' },
-          '50%': { transform: 'translate3d(0, -12px, 0) scale(1.02)' },
+          '50%': { transform: 'translate3d(0, -20px, 0) scale(1.03)' },
         },
         shimmer: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
@@ -52,7 +51,7 @@ const config: Config = {
         },
         floatSlow: {
           '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '50%': { transform: 'translateY(-8px) rotate(0.5deg)' },
+          '50%': { transform: 'translateY(-12px) rotate(-1deg) scale(1.02)' },
         },
       },
     },

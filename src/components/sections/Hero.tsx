@@ -113,14 +113,14 @@ export default function Hero() {
       <div className="relative z-10 container-wide flex min-h-screen items-center py-28 md:py-36">
         <div className="grid w-full grid-cols-1 gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
           <div className="max-w-4xl">
-            <p className="hero-reveal section-kicker mb-5 text-xs md:text-sm">Portfolio / Creative systems / Scroll choreography</p>
+            <p className="hero-reveal section-kicker mb-5 text-xs md:text-sm">Artificial Intelligence / Full-Stack & IoT Systems</p>
             <h1 ref={titleRef} data-heading-reveal="words" className="section-title text-6xl leading-[0.9] md:text-8xl lg:text-[7.8rem]">
               <span className="hero-reveal block text-paper/90">Hi, I'm</span>
               <span className="hero-reveal block text-gradient">{portfolioData.name}</span>
             </h1>
 
             <div className="mt-8 max-w-2xl space-y-5">
-              <p ref={subtitleRef} className="max-w-xl text-xl text-sand/85 md:text-2xl">
+              <p ref={subtitleRef} className="max-w-xl text-xl text-sand/85 md:text-2xl font-medium">
                 {portfolioData.title}
               </p>
 
@@ -140,7 +140,7 @@ export default function Hero() {
                 onClick={() => handleScroll('contact')}
                 className="cta-button pressable rounded-full border border-paper/15 bg-paper/5 px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-all duration-300 hover:-translate-y-0.5 hover:border-brass/40 hover:bg-paper/10"
               >
-                Start a Project
+                Get In Touch
               </button>
             </div>
           </div>
@@ -154,31 +154,31 @@ export default function Hero() {
               <div className="relative space-y-6">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="section-kicker text-[0.62rem]">Selected focus</p>
-                    <h2 className="section-title mt-2 text-3xl text-paper">Motion, layout, and systems that feel authored</h2>
+                    <p className="section-kicker text-[0.62rem]">Academic Focus</p>
+                    <h2 className="section-title mt-2 text-3xl text-paper">Building practical solutions with algorithms & electronics</h2>
                   </div>
-                  <span className="rounded-full border border-brass/30 bg-brass/10 px-3 py-1 text-[0.65rem] uppercase tracking-[0.22em] text-sand">
-                    Open
+                  <span className="rounded-full border border-brass/30 bg-brass/10 px-3 py-1 text-[0.65rem] uppercase tracking-[0.22em] text-sand font-bold">
+                    GIKI '28
                   </span>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="rounded-[1.25rem] border border-paper/10 bg-paper/5 p-4">
-                    <p className="text-[0.65rem] uppercase tracking-[0.28em] text-sand/60">Experience</p>
-                    <p className="mt-3 font-display text-4xl text-paper">5+</p>
-                    <p className="mt-2 text-sm text-paper/70">Years building interfaces and motion systems.</p>
+                    <p className="text-[0.65rem] uppercase tracking-[0.28em] text-sand/60">Study Portal</p>
+                    <p className="mt-3 font-display text-4xl text-paper font-bold">50+</p>
+                    <p className="mt-2 text-xs text-paper/70">Centralized academic resources built with Firebase.</p>
                   </div>
                   <div className="rounded-[1.25rem] border border-paper/10 bg-paper/5 p-4">
-                    <p className="text-[0.65rem] uppercase tracking-[0.28em] text-sand/60">Mode</p>
-                    <p className="mt-3 font-display text-4xl text-paper">Editorial</p>
-                    <p className="mt-2 text-sm text-paper/70">Warm palettes, layered depth, and tactile motion.</p>
+                    <p className="text-[0.65rem] uppercase tracking-[0.28em] text-sand/60">Specialty</p>
+                    <p className="mt-3 font-display text-4xl text-paper font-bold">AI & IoT</p>
+                    <p className="mt-2 text-xs text-paper/70">Embedded sensors, TensorFlow, and full-stack React.</p>
                   </div>
                 </div>
 
-                <div className="rounded-[1.25rem] border border-paper/10 bg-[linear-gradient(135deg,rgba(197,138,58,0.12),rgba(60,111,102,0.10),rgba(180,75,45,0.10))] p-4">
+                <div className="rounded-[1.25rem] border border-paper/10 bg-[linear-gradient(135deg,rgba(255,59,112,0.1),rgba(14,165,233,0.08),rgba(0,255,135,0.08))] p-4">
                   <p className="text-[0.65rem] uppercase tracking-[0.28em] text-sand/60">Current pursuit</p>
                   <p className="mt-2 text-sm leading-7 text-paper/80">
-                    Designing interfaces that behave like print layouts under glass: crisp hierarchy, warm contrast, and motion that reveals rather than distracts.
+                    Developing centralized student portal infrastructure, optimizing IoT plant monitoring system APIs, and studying Artificial Neural Networks.
                   </p>
                 </div>
               </div>

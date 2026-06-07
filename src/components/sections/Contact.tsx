@@ -74,7 +74,7 @@ export default function Contact() {
           Let's Work Together
         </h2>
         <p className="mx-auto mb-16 max-w-2xl text-center text-paper/70">
-          Have a project in mind or just want to chat? Feel free to reach out. I'm always interested in hearing about new opportunities and interesting projects.
+          Have a question about my work, want to collaborate on AI or IoT projects, or just want to connect? Drop a message below and I'll get back to you.
         </p>
 
         <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-3">

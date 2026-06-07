@@ -68,25 +68,25 @@ export default function About() {
           {/* Content */}
           <div ref={contentRef} className="space-y-6">
             <p className="text-lg leading-relaxed text-paper/78">
-              I'm a passionate full-stack developer with 5+ years of experience building scalable web applications and immersive digital experiences. My journey in tech started with a curiosity about how things work, which evolved into a career of solving complex problems through elegant code.
+              I'm a Computer Science undergraduate at the Ghulam Ishaq Khan Institute (GIKI) specializing in Artificial Intelligence. I bridge the gap between software systems and hardware by combining strong foundations in Full-Stack Web Development with IoT integration.
             </p>
 
             <p className="text-lg leading-relaxed text-paper/78">
-              I specialize in modern frontend technologies like React and Next.js, combined with backend expertise in Node.js and cloud platforms. What truly drives me is the intersection of design and functionality—creating interfaces that not only look beautiful but feel responsive and alive.
+              My toolkit spans React.js and Node.js for scalable web interfaces, Python for neural networks and data science (NumPy, Pandas, Matplotlib), and C/C++ for algorithmic problem-solving and embedded Arduino controllers.
             </p>
 
             <p className="text-lg leading-relaxed text-paper/78">
-              When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or crafting motion design experiments. I'm always excited about collaborating on projects that push boundaries and create meaningful impact.
+              I am active in my campus communities, contributing to GDG on Campus as a Full-Stack IoT Developer and working with AIAA GIKI on simulation concepts. I love turning complex logic into structured, practical applications.
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-4">
               <div className="luxury-card rounded-[1.5rem] p-4">
-                <p className="font-display text-3xl text-brass">5+</p>
-                <p className="text-sm text-sand/70">Years Experience</p>
+                <p className="font-display text-3xl text-brass font-bold">50+</p>
+                <p className="text-xs text-sand/70">Portal Resources</p>
               </div>
               <div className="luxury-card rounded-[1.5rem] p-4">
-                <p className="font-display text-3xl text-jade">25+</p>
-                <p className="text-sm text-sand/70">Projects Completed</p>
+                <p className="font-display text-3xl text-jade font-bold">GIKI '28</p>
+                <p className="text-xs text-sand/70">Artificial Intelligence</p>
               </div>
             </div>
           </div>
