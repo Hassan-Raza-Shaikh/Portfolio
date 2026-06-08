@@ -82,7 +82,7 @@ export default function Hero() {
           {/* Hero Main Copy */}
           <div className="max-w-3xl space-y-6">
             <p className="hero-reveal-title section-kicker text-xs md:text-sm">
-              Artificial Intelligence / Full-Stack & IoT Systems
+              Artificial Intelligence & Full-Stack Systems
             </p>
             <h1 className="hero-reveal-title section-title text-5xl leading-[0.95] md:text-7xl lg:text-[6.8rem]">
               <span className="block text-paper/90">Hi, I'm</span>
@@ -125,7 +125,7 @@ export default function Hero() {
               <div className="relative space-y-6">
                 <div>
                   <p className="section-kicker text-[0.62rem]">Academic Focus</p>
-                  <h2 className="section-title mt-2 text-2xl md:text-3xl text-paper">Building solutions with algorithms & electronics</h2>
+                  <h2 className="section-title mt-2 text-2xl md:text-3xl text-paper">Building scalable applications & AI workflows</h2>
                 </div>
 
                 <div className="grid gap-4 grid-cols-2">
@@ -136,15 +136,15 @@ export default function Hero() {
                   </div>
                   <div className="rounded-[1.25rem] border border-white/5 bg-white/5 p-4">
                     <p className="text-[0.6rem] uppercase tracking-[0.2em] text-sand/50">Specialty</p>
-                    <p className="mt-2 font-display text-3xl text-paper font-bold">AI & IoT</p>
-                    <p className="mt-1 text-[0.7rem] text-paper/60">Arduino interfaces and Neural Nets.</p>
+                    <p className="mt-2 font-display text-3xl text-paper font-bold">AI & Web</p>
+                    <p className="mt-1 text-[0.7rem] text-paper/60">Web frameworks and Neural Nets.</p>
                   </div>
                 </div>
 
                 <div className="rounded-[1.25rem] border border-white/5 bg-gradient-to-br from-accent/5 to-jade/5 p-4">
                   <p className="text-[0.6rem] uppercase tracking-[0.2em] text-sand/50">Current pursuit</p>
                   <p className="mt-1.5 text-xs leading-6 text-paper/70">
-                    Optimizing real-time IoT dashboard sensors and studying Data Structures & Artificial Neural Networks at GIKI.
+                    Optimizing real-time backend API performance and studying Data Structures & Artificial Neural Networks at GIKI.
                   </p>
                 </div>
               </div>

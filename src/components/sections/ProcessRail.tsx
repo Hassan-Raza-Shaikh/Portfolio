@@ -12,8 +12,8 @@ const steps = [
   },
   {
     id: '02',
-    title: 'Hardware & IoT',
-    text: 'Interfacing Arduino microcontrollers with hardware sensors to capture plant and ambient data in real-time.',
+    title: 'Backend Design',
+    text: 'Designing relational databases, setting up secure storage systems, and building robust REST APIs for data processing.',
     motif: 'weave' as const,
     color: 'text-ember',
   },

@@ -38,7 +38,7 @@ export default function Skills() {
           <p className="section-kicker mb-4 text-xs md:text-sm">Capabilities / Stack / Range</p>
           <h2 className="section-title text-4xl md:text-6xl text-gradient">Skills & Expertise</h2>
           <p className="mt-4 max-w-xl text-paper/70">
-            A map of my technical skillset, spanning programming languages, deep learning frameworks, and embedded IoT systems.
+            A map of my technical skillset, spanning programming languages, deep learning frameworks, and backend systems.
           </p>
         </div>
 

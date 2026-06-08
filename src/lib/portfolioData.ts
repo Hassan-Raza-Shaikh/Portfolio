@@ -3,7 +3,7 @@ import { PortfolioData } from '@/types/portfolio';
 export const portfolioData: PortfolioData = {
   name: 'Hassan Raza Shaikh',
   title: 'Computer Science & AI Undergrad | Full-Stack Builder',
-  bio: 'Computer Science undergraduate specializing in Artificial Intelligence with strong foundations in Full-Stack Development and IoT. Experienced in React, Node.js, Python, and Generative AI workflows. Passionate about building scalable software solutions and solving algorithmic problems.',
+  bio: 'Computer Science undergraduate specializing in Artificial Intelligence with strong foundations in Full-Stack Development and Backend Systems. Experienced in React, Node.js, Python, and Generative AI workflows. Passionate about building scalable software solutions and solving algorithmic problems.',
   email: 'hassan.raza.shaikh.hrs@gmail.com',
   socials: [
     { name: 'GitHub', url: 'https://github.com/Hassan-Raza-Shaikh', icon: 'github' },
@@ -30,11 +30,11 @@ export const portfolioData: PortfolioData = {
       featured: true,
     },
     {
-      id: 'iot-plant',
-      title: 'IoT Plant Monitoring System',
-      description: 'An IoT system using Arduino sensors to monitor soil and plant data, coupled with a React dashboard for real-time visualization and an optimized Node.js backend.',
+      id: 'plant-growth',
+      title: 'Plant Growth Analytics Hub',
+      description: 'A data analytics dashboard featuring custom Node.js API endpoints, automated processing pipelines, and responsive React charting components.',
       image: '/images/project2.jpg',
-      tags: ['Arduino IDE', 'React.js', 'Node.js', 'IoT Integration', 'API Optimization'],
+      tags: ['React.js', 'Node.js', 'Express', 'API Optimization', 'Full-Stack'],
       githubUrl: 'https://github.com/Hassan-Raza-Shaikh',
       featured: true,
     },
@@ -60,24 +60,24 @@ export const portfolioData: PortfolioData = {
     },
     {
       category: 'Tools & Platforms',
-      items: ['Git', 'GitHub', 'Firebase', 'VS Code', 'Arduino IDE'],
+      items: ['Git', 'GitHub', 'Firebase', 'VS Code', 'PostgreSQL'],
     },
     {
       category: 'Core Concepts',
-      items: ['Data Structures', 'Algorithms', 'IoT Integration', 'Generative AI Prompting', 'SDLC'],
+      items: ['Data Structures', 'Algorithms', 'Database Design', 'Generative AI Prompting', 'SDLC'],
     },
   ],
   experience: [
     {
-      title: 'Full Stack IoT Developer',
+      title: 'Full Stack Developer',
       company: 'Google Developers Group on Campus',
       period: 'Nov 2025 - Jan 2026',
-      description: 'Developed an IoT Plant Monitoring System using Arduino sensors and integrated real-time visualization dashboards.',
+      description: 'Built backend server infrastructure, REST APIs, and database schemas for an agricultural data analytics platform.',
       highlights: [
-        'Developed an IoT Plant Monitoring System using Arduino sensors',
-        'Built a React dashboard for real-time visualization',
-        'Implemented Node.js backend for data processing',
-        'Optimized API performance and improved reliability',
+        'Designed and implemented Node.js backend API routes',
+        'Built a React dashboard for real-time data visualization',
+        'Optimized API performance and database schema reliability',
+        'Collaborated with developers to integrate backend API endpoints with frontend views',
       ],
     },
   ],

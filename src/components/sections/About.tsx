@@ -81,15 +81,15 @@ export default function About() {
           {/* Content Column */}
           <div className="space-y-6 reveal-on-scroll">
             <p className="text-lg leading-relaxed text-paper/78">
-              I'm a Computer Science undergraduate at the Ghulam Ishaq Khan Institute (GIKI) specializing in Artificial Intelligence. I bridge the gap between software systems and hardware by combining strong foundations in Full-Stack Web Development with IoT integration.
+              I'm a Computer Science undergraduate at the Ghulam Ishaq Khan Institute (GIKI) specializing in Artificial Intelligence. I combine strong foundations in Full-Stack Web Development and Backend Systems with a passion for designing scalable software solutions.
             </p>
 
             <p className="text-lg leading-relaxed text-paper/78">
-              My toolkit spans React.js and Node.js for scalable web interfaces, Python for neural networks and data science (NumPy, Pandas, Matplotlib), and C/C++ for algorithmic problem-solving and embedded Arduino controllers.
+              My toolkit spans React.js and Node.js for scalable web interfaces, Python for neural networks and data science (NumPy, Pandas, Matplotlib), and C/C++ for algorithmic problem-solving and database design.
             </p>
 
             <p className="text-lg leading-relaxed text-paper/78">
-              I am active in my campus communities, contributing to GDG on Campus as a Full-Stack IoT Developer and working with AIAA GIKI on simulation concepts. I love turning complex logic into structured, practical applications.
+              I am active in my campus communities, contributing to GDG on Campus as a Full-Stack Developer and working with AIAA GIKI on simulation concepts. I love turning complex logic into structured, practical applications.
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-4">

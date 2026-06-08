@@ -53,7 +53,7 @@ export default function Contact() {
             Let's Work Together
           </h2>
           <p className="mx-auto max-w-2xl text-paper/70">
-            Have a question about my work, want to collaborate on AI or IoT projects, or just want to connect? Drop a message below and I'll get back to you.
+            Have a question about my work, want to collaborate on AI or full-stack projects, or just want to connect? Drop a message below and I'll get back to you.
           </p>
         </div>
 

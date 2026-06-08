@@ -14,10 +14,10 @@ const insights: Record<string, { problem: string; approach: string; outcome: str
     approach: 'Built an NLP tool integrating speech-to-text transcribing, LLM summarizing, and ASL video output.',
     outcome: 'Created a Streamlit dashboard showing real-time transcripts and accessibility translations.',
   },
-  'iot-plant': {
-    problem: 'Real-time soil metrics and ambient light levels could not be visualized dynamically or processed cleanly from home.',
-    approach: 'Wrote Arduino scripts for hardware sensors, linked them to a Node.js web server, and built a live React chart interface.',
-    outcome: 'Designed a fully functional IoT monitoring workflow with stable API processing and reliable live charts.',
+  'plant-growth': {
+    problem: 'Agricultural analytics and plant growth datasets required centralized backend processing and a web-based dashboard for visualization.',
+    approach: 'Developed custom REST APIs using Node.js/Express to aggregate data, designed schema structures, and built a React visualization interface for historical data.',
+    outcome: 'Created a secure, high-throughput backend data pipeline with stable API endpoints and interactive frontend charts.',
   },
   'worldlines': {
     problem: 'Structuring complex data science notes and Jupyter notebooks into structured guides was a highly manual task.',
@@ -189,7 +189,7 @@ export default function Projects() {
           </article>
         );
 
-      case 'iot-plant':
+      case 'plant-growth':
         return (
           <article
             key={project.id}
@@ -199,19 +199,19 @@ export default function Projects() {
               {/* Graphic Mockup */}
               <div className="h-40 rounded-[1.5rem] bg-gradient-to-br from-ink to-dark border border-white/5 p-4 flex flex-col justify-between overflow-hidden relative">
                 <div className="flex items-center justify-between text-[0.5rem] text-sand/50 uppercase tracking-widest font-semibold">
-                  <span>Soil Metric Hub</span>
-                  <span className="text-jade flex items-center gap-1 font-bold animate-pulse">
-                    <span className="h-1.5 w-1.5 rounded-full bg-jade" /> Live Sensors
+                  <span>API Telemetry Hub</span>
+                  <span className="text-jade flex items-center gap-1 font-bold">
+                    <span className="h-1.5 w-1.5 rounded-full bg-jade animate-pulse" /> Live Metrics
                   </span>
                 </div>
                 <div className="grid grid-cols-2 gap-2 my-2">
                   <div className="p-2 rounded-xl bg-white/5 border border-white/10 flex flex-col justify-between">
-                    <span className="text-[0.45rem] text-sand/55 uppercase">Moisture</span>
-                    <span className="text-sm font-bold text-paper mt-0.5">64% <span className="text-[0.6rem] font-normal text-jade font-sans">Ok</span></span>
+                    <span className="text-[0.45rem] text-sand/55 uppercase">API Requests</span>
+                    <span className="text-sm font-bold text-paper mt-0.5">1.2k<span className="text-[0.6rem] font-normal text-sand/50 font-sans">/min</span></span>
                   </div>
                   <div className="p-2 rounded-xl bg-white/5 border border-white/10 flex flex-col justify-between">
-                    <span className="text-[0.45rem] text-sand/55 uppercase">Temp</span>
-                    <span className="text-sm font-bold text-paper mt-0.5">26.4°C</span>
+                    <span className="text-[0.45rem] text-sand/55 uppercase">DB Latency</span>
+                    <span className="text-sm font-bold text-paper mt-0.5">18ms</span>
                   </div>
                 </div>
                 <div className="text-[0.45rem] font-mono text-sand/40 border-t border-white/5 pt-1.5 flex items-center justify-between">
@@ -220,7 +220,7 @@ export default function Projects() {
                 </div>
               </div>
 
-              <span className="section-kicker text-[0.65rem] tracking-[0.25em] text-jade">IoT & Automation</span>
+              <span className="section-kicker text-[0.65rem] tracking-[0.25em] text-jade">Backend Analytics</span>
               <h3 className="project-title font-display text-2xl text-paper font-bold group-hover:text-jade transition-colors">
                 {project.title}
               </h3>
@@ -354,10 +354,10 @@ export default function Projects() {
     <section id="projects" className="py-12 bg-transparent">
       <div className="container-wide">
         <div className="mb-12 reveal-on-scroll">
-          <p className="section-kicker mb-4 text-xs md:text-sm">Selected work / Portals / Embedded systems</p>
+          <p className="section-kicker mb-4 text-xs md:text-sm">Selected work / Portals / Web Applications</p>
           <h2 className="section-title text-4xl md:text-6xl text-gradient">Featured Projects</h2>
           <p className="mt-4 max-w-xl text-paper/70">
-            A showcase of engineering solutions combining AI concepts, web architecture, and IoT systems. Click 'Insights' on any card to view the problem-solving metrics.
+            A showcase of engineering solutions combining AI concepts, web architecture, and backend systems. Click 'Insights' on any card to view the problem-solving metrics.
           </p>
         </div>
 
