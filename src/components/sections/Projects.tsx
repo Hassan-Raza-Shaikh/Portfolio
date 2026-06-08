@@ -1,219 +1,369 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { useState } from 'react';
 import { portfolioData } from '@/lib/portfolioData';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const previewContent: Record<string, { problem: string; approach: string; outcome: string }> = {
+const insights: Record<string, { problem: string; approach: string; outcome: string }> = {
   'study-portal': {
     problem: 'GIKI students lacked a unified academic portal to access course files and resource documents, leading to high search times.',
     approach: 'Built a centralized React dashboard with secure Firebase database architecture and efficient storage links.',
     outcome: 'Successfully hosted over 50 resources and slashed academic resource retrieval times by 60% for students.',
+  },
+  'equilearn': {
+    problem: 'Video learning materials remain inaccessible for deaf or hard-of-hearing students.',
+    approach: 'Built an NLP tool integrating speech-to-text transcribing, LLM summarizing, and ASL video output.',
+    outcome: 'Created a Streamlit dashboard showing real-time transcripts and accessibility translations.',
   },
   'iot-plant': {
     problem: 'Real-time soil metrics and ambient light levels could not be visualized dynamically or processed cleanly from home.',
     approach: 'Wrote Arduino scripts for hardware sensors, linked them to a Node.js web server, and built a live React chart interface.',
     outcome: 'Designed a fully functional IoT monitoring workflow with stable API processing and reliable live charts.',
   },
+  'worldlines': {
+    problem: 'Structuring complex data science notes and Jupyter notebooks into structured guides was a highly manual task.',
+    approach: 'Designed a Quarto-based build pipeline targeting GitHub Pages for fast static page generation.',
+    outcome: 'Simplified content authoring by linking interactive notebooks into a responsive reading interface.',
+  },
 };
 
 export default function Projects() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
   const [activePreview, setActivePreview] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (containerRef.current && trackRef.current) {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const track = trackRef.current;
-      const trackWidth = track.offsetWidth;
-      const containerWidth = containerRef.current.offsetWidth;
+  const toggleInsight = (id: string) => {
+    setActivePreview((current) => (current === id ? null : id));
+  };
 
-      if (trackWidth > containerWidth && !prefersReducedMotion) {
-        const distance = trackWidth - containerWidth;
+  const getProjectCard = (project: typeof portfolioData.projects[number]) => {
+    const hasInsight = activePreview === project.id;
+    const insight = insights[project.id];
 
-        gsap.to(track, {
-          x: -distance,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top top',
-            end: `+=${distance * 1.5}`,
-            scrub: 1.2,
-            pin: true,
-            pinSpacing: true,
-            markers: false,
-          },
-        });
-      }
-
-      const cards = track.querySelectorAll<HTMLElement>('.project-card');
-      cards.forEach((card, idx) => {
-        gsap.from(card, {
-          opacity: 0,
-          scale: 0.9,
-          y: 20,
-          duration: 0.6,
-          delay: idx * 0.04,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top 75%',
-            toggleActions: 'play none none reverse',
-          },
-        });
-
-        if (prefersReducedMotion) return;
-
-        const visual = card.querySelector<HTMLElement>('.project-visual');
-        const title = card.querySelector<HTMLElement>('.project-title');
-
-        const handleMove = (event: PointerEvent) => {
-          const rect = card.getBoundingClientRect();
-          const x = (event.clientX - rect.left) / rect.width - 0.5;
-          const y = (event.clientY - rect.top) / rect.height - 0.5;
-
-          gsap.to(card, {
-            rotateX: -y * 5,
-            rotateY: x * 7,
-            transformPerspective: 900,
-            duration: 0.35,
-            ease: 'power2.out',
-            overwrite: true,
-          });
-
-          gsap.to(visual, {
-            xPercent: x * 8,
-            yPercent: y * 8,
-            scale: 1.04,
-            duration: 0.35,
-            ease: 'power2.out',
-            overwrite: true,
-          });
-
-          gsap.to(title, {
-            x: x * 6,
-            y: y * 4,
-            duration: 0.35,
-            ease: 'power2.out',
-            overwrite: true,
-          });
-        };
-
-        const resetMove = () => {
-          gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.42, ease: 'power2.out', overwrite: true });
-          gsap.to([visual, title], {
-            x: 0,
-            y: 0,
-            xPercent: 0,
-            yPercent: 0,
-            scale: 1,
-            duration: 0.42,
-            ease: 'power2.out',
-            overwrite: true,
-          });
-        };
-
-        card.addEventListener('pointermove', handleMove);
-        card.addEventListener('pointerleave', resetMove);
-        card.addEventListener('blur', resetMove);
-
-        ScrollTrigger.create({
-          trigger: card,
-          start: 'top bottom',
-          end: 'bottom top',
-          onLeave: resetMove,
-          onLeaveBack: resetMove,
-        });
-      });
-    }
-  }, []);
-
-  return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-dark via-ink to-dark">
-      <div className="container-wide mb-12">
-        <p className="section-kicker mb-4 text-xs md:text-sm">Selected work / Portals / Embedded systems</p>
-        <h2 data-heading-reveal="words" className="section-title text-4xl md:text-6xl text-gradient">Featured Projects</h2>
-        <p className="mt-4 max-w-xl text-paper/70">
-          Scroll horizontally to explore my technical projects. Each card showcases engineering solutions combining AI concepts, web architecture, and IoT systems.
-        </p>
-      </div>
-
-      <div ref={containerRef} className="relative w-full overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.02),transparent_22%,transparent_78%,rgba(255,255,255,0.03))]">
-        <div ref={trackRef} className="flex gap-8 px-8 py-12 will-change-transform md:px-16">
-          {portfolioData.projects.map((project) => (
-            <article
-              key={project.id}
-              className="project-card luxury-card pressable flex-shrink-0 w-[24rem] overflow-hidden rounded-[2rem] transition-all duration-300 group hover:-translate-y-1"
-              onMouseEnter={() => setActivePreview(project.id)}
-              onMouseLeave={() => setActivePreview((current) => (current === project.id ? null : current))}
-            >
-              <div className="project-visual relative h-56 overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(197,138,58,0.24),transparent_30%),radial-gradient(circle_at_80%_24%,rgba(60,111,102,0.18),transparent_26%),linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))]">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-6xl opacity-25 animate-float-slow">◐</div>
-                </div>
-                <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(0,0,0,0.06),rgba(0,0,0,0.36))] opacity-70 transition-opacity group-hover:opacity-100" />
-              </div>
-
-              <div className="p-6">
-                <h3 className="project-title mb-2 font-display text-2xl text-paper transition-colors group-hover:text-brass">
+    switch (project.id) {
+      case 'study-portal':
+        return (
+          <article
+            key={project.id}
+            className="luxury-card rounded-[2rem] p-6 md:p-8 md:col-span-8 flex flex-col justify-between group reveal-on-scroll"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              {/* Info Column */}
+              <div className="lg:col-span-7 space-y-4">
+                <span className="section-kicker text-[0.65rem] tracking-[0.25em]">Centralized Portal</span>
+                <h3 className="project-title font-display text-2xl md:text-3xl text-paper font-bold group-hover:text-brass transition-colors">
                   {project.title}
                 </h3>
-                <p className="mb-4 text-sm leading-7 text-paper/72">{project.description}</p>
+                <p className="text-sm leading-7 text-paper/75">
+                  {project.description}
+                </p>
 
-                <button
-                  type="button"
-                  onClick={() => setActivePreview((current) => (current === project.id ? null : project.id))}
-                  className="pressable mb-4 rounded-full border border-paper/15 bg-paper/6 px-3 py-1.5 text-[0.62rem] uppercase tracking-[0.2em] text-sand/75"
-                >
-                  {activePreview === project.id ? 'Hide insights' : 'Preview insights'}
-                </button>
-
-                {activePreview === project.id && previewContent[project.id] && (
-                  <div className="mb-4 space-y-2 rounded-xl border border-paper/12 bg-paper/6 p-3 text-xs leading-6 text-paper/75">
-                    <p><span className="text-sand/80">Problem:</span> {previewContent[project.id].problem}</p>
-                    <p><span className="text-sand/80">Approach:</span> {previewContent[project.id].approach}</p>
-                    <p><span className="text-sand/80">Outcome:</span> {previewContent[project.id].outcome}</p>
-                  </div>
-                )}
-
-                <div className="mb-4 flex flex-wrap gap-2">
-                  {project.tags.slice(0, 3).map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="rounded-full border border-paper/10 bg-paper/6 px-3 py-1 text-[0.62rem] uppercase tracking-[0.2em] text-sand/75"
-                    >
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.tags.map((tag, idx) => (
+                    <span key={idx} className="rounded-full border border-white/5 bg-white/5 px-3 py-1 text-[0.62rem] uppercase tracking-[0.15em] text-sand/80">
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex gap-3 border-t border-paper/10 pt-4">
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="pressable flex-1 rounded-full border border-brass/30 bg-brass/10 py-2 text-center text-sm text-paper transition-all hover:border-brass/50 hover:bg-brass/18"
-                    >
-                      Live Demo
-                    </a>
-                  )}
+                <div className="flex gap-3 pt-4 border-t border-white/5">
+                  <button
+                    onClick={() => toggleInsight(project.id)}
+                    className="rounded-full border border-paper/15 bg-paper/6 px-4 py-2 text-[0.62rem] uppercase tracking-[0.18em] text-sand/80 hover:bg-white/10 transition-colors font-semibold"
+                  >
+                    {hasInsight ? 'Hide Insights' : 'Preview Insights'}
+                  </button>
                   {project.githubUrl && (
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="pressable flex-1 rounded-full border border-paper/10 bg-paper/6 py-2 text-center text-sm text-paper/80 transition-all hover:border-paper/20 hover:bg-paper/10"
+                      className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-center text-xs text-paper/85 hover:bg-white/10 transition-colors font-semibold"
                     >
-                      GitHub
+                      GitHub Repo
                     </a>
                   )}
                 </div>
               </div>
-            </article>
-          ))}
+
+              {/* Graphic Mockup Column */}
+              <div className="lg:col-span-5 h-48 md:h-56 rounded-[1.5rem] bg-gradient-to-br from-ink to-dark border border-white/5 p-4 flex flex-col justify-between overflow-hidden relative">
+                <div className="flex items-center justify-between border-b border-white/5 pb-2 text-[0.55rem] text-sand/50 uppercase tracking-widest font-semibold">
+                  <span>GIKI PORTAL CLOUD</span>
+                  <span className="text-brass">50+ Files</span>
+                </div>
+                <div className="space-y-2 py-3 overflow-y-auto">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-[0.55rem] text-sand/70 font-medium">
+                    <span className="text-brass">📁</span> Artificial Neural Networks
+                  </div>
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-[0.55rem] text-sand/70 font-medium">
+                    <span className="text-brass">📁</span> Data Structures & Algorithms
+                  </div>
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-[0.55rem] text-sand/70 font-medium">
+                    <span className="text-brass">📁</span> Linear Algebra Courses
+                  </div>
+                </div>
+                <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-dark to-transparent pointer-events-none" />
+              </div>
+            </div>
+
+            {hasInsight && insight && (
+              <div className="mt-6 p-4 rounded-2xl border border-white/10 bg-white/5 text-xs leading-6 text-paper/80 space-y-2 animate-fade-in">
+                <p><span className="text-brass font-bold">Problem:</span> {insight.problem}</p>
+                <p><span className="text-brass font-bold">Approach:</span> {insight.approach}</p>
+                <p><span className="text-brass font-bold">Outcome:</span> {insight.outcome}</p>
+              </div>
+            )}
+          </article>
+        );
+
+      case 'equilearn':
+        return (
+          <article
+            key={project.id}
+            className="luxury-card luxury-card-green rounded-[2rem] p-6 md:col-span-4 flex flex-col justify-between group reveal-on-scroll"
+          >
+            <div className="space-y-4">
+              {/* Graphic Mockup */}
+              <div className="h-40 rounded-[1.5rem] bg-gradient-to-br from-ink to-dark border border-white/5 p-4 flex flex-col justify-between overflow-hidden relative">
+                <div className="flex items-center justify-between text-[0.5rem] text-sand/50 uppercase tracking-widest font-semibold">
+                  <span>Gemini NLP Core</span>
+                  <span className="px-2 py-0.5 rounded bg-ember/10 text-ember border border-ember/25">ASL Active</span>
+                </div>
+                <div className="h-10 flex items-end gap-1.5 px-2">
+                  <div className="w-full bg-ember/30 h-[25%] rounded-t animate-pulse" />
+                  <div className="w-full bg-ember/40 h-[65%] rounded-t" />
+                  <div className="w-full bg-ember/60 h-[90%] rounded-t animate-pulse" />
+                  <div className="w-full bg-ember/50 h-[45%] rounded-t" />
+                  <div className="w-full bg-ember/30 h-[75%] rounded-t" />
+                  <div className="w-full bg-ember/20 h-[30%] rounded-t animate-pulse" />
+                </div>
+                <div className="text-[0.45rem] font-mono text-sand/40 border-t border-white/5 pt-1.5 flex items-center justify-between">
+                  <span>[Input: Lecture.mp4]</span>
+                  <span>[Transcribing...]</span>
+                </div>
+              </div>
+
+              <span className="section-kicker text-[0.65rem] tracking-[0.25em] text-ember">AI Accessibility</span>
+              <h3 className="project-title font-display text-2xl text-paper font-bold group-hover:text-ember transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-sm leading-7 text-paper/75">
+                {project.description}
+              </p>
+            </div>
+
+            <div className="space-y-4 pt-4">
+              <div className="flex flex-wrap gap-2">
+                {project.tags.slice(0, 3).map((tag, idx) => (
+                  <span key={idx} className="rounded-full border border-white/5 bg-white/5 px-2.5 py-0.5 text-[0.6rem] uppercase tracking-[0.15em] text-sand/80">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex gap-2 border-t border-white/5 pt-4">
+                <button
+                  onClick={() => toggleInsight(project.id)}
+                  className="flex-1 rounded-full border border-paper/15 bg-paper/6 py-2 text-[0.62rem] uppercase tracking-[0.18em] text-sand/80 hover:bg-white/10 transition-colors font-semibold"
+                >
+                  {hasInsight ? 'Hide Details' : 'Insights'}
+                </button>
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 rounded-full border border-ember/20 bg-ember/5 py-2 text-center text-xs text-ember hover:bg-ember/15 transition-colors font-semibold"
+                  >
+                    Demo Link
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {hasInsight && insight && (
+              <div className="mt-4 p-4 rounded-2xl border border-white/10 bg-white/5 text-xs leading-6 text-paper/80 space-y-2 animate-fade-in">
+                <p><span className="text-ember font-bold">Problem:</span> {insight.problem}</p>
+                <p><span className="text-ember font-bold">Approach:</span> {insight.approach}</p>
+                <p><span className="text-ember font-bold">Outcome:</span> {insight.outcome}</p>
+              </div>
+            )}
+          </article>
+        );
+
+      case 'iot-plant':
+        return (
+          <article
+            key={project.id}
+            className="luxury-card luxury-card-blue rounded-[2rem] p-6 md:col-span-5 flex flex-col justify-between group reveal-on-scroll"
+          >
+            <div className="space-y-4">
+              {/* Graphic Mockup */}
+              <div className="h-40 rounded-[1.5rem] bg-gradient-to-br from-ink to-dark border border-white/5 p-4 flex flex-col justify-between overflow-hidden relative">
+                <div className="flex items-center justify-between text-[0.5rem] text-sand/50 uppercase tracking-widest font-semibold">
+                  <span>Soil Metric Hub</span>
+                  <span className="text-jade flex items-center gap-1 font-bold animate-pulse">
+                    <span className="h-1.5 w-1.5 rounded-full bg-jade" /> Live Sensors
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 gap-2 my-2">
+                  <div className="p-2 rounded-xl bg-white/5 border border-white/10 flex flex-col justify-between">
+                    <span className="text-[0.45rem] text-sand/55 uppercase">Moisture</span>
+                    <span className="text-sm font-bold text-paper mt-0.5">64% <span className="text-[0.6rem] font-normal text-jade font-sans">Ok</span></span>
+                  </div>
+                  <div className="p-2 rounded-xl bg-white/5 border border-white/10 flex flex-col justify-between">
+                    <span className="text-[0.45rem] text-sand/55 uppercase">Temp</span>
+                    <span className="text-sm font-bold text-paper mt-0.5">26.4°C</span>
+                  </div>
+                </div>
+                <div className="text-[0.45rem] font-mono text-sand/40 border-t border-white/5 pt-1.5 flex items-center justify-between">
+                  <span>[Node.js Server: Active]</span>
+                  <span>[Port: 8080]</span>
+                </div>
+              </div>
+
+              <span className="section-kicker text-[0.65rem] tracking-[0.25em] text-jade">IoT & Automation</span>
+              <h3 className="project-title font-display text-2xl text-paper font-bold group-hover:text-jade transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-sm leading-7 text-paper/75">
+                {project.description}
+              </p>
+            </div>
+
+            <div className="space-y-4 pt-4">
+              <div className="flex flex-wrap gap-2">
+                {project.tags.slice(0, 3).map((tag, idx) => (
+                  <span key={idx} className="rounded-full border border-white/5 bg-white/5 px-2.5 py-0.5 text-[0.6rem] uppercase tracking-[0.15em] text-sand/80">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex gap-2 border-t border-white/5 pt-4">
+                <button
+                  onClick={() => toggleInsight(project.id)}
+                  className="flex-1 rounded-full border border-paper/15 bg-paper/6 py-2 text-[0.62rem] uppercase tracking-[0.18em] text-sand/80 hover:bg-white/10 transition-colors font-semibold"
+                >
+                  {hasInsight ? 'Hide Details' : 'Insights'}
+                </button>
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 rounded-full border border-white/10 bg-white/5 py-2 text-center text-xs text-paper/85 hover:bg-white/10 transition-colors font-semibold"
+                  >
+                    GitHub Code
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {hasInsight && insight && (
+              <div className="mt-4 p-4 rounded-2xl border border-white/10 bg-white/5 text-xs leading-6 text-paper/80 space-y-2 animate-fade-in">
+                <p><span className="text-jade font-bold">Problem:</span> {insight.problem}</p>
+                <p><span className="text-jade font-bold">Approach:</span> {insight.approach}</p>
+                <p><span className="text-jade font-bold">Outcome:</span> {insight.outcome}</p>
+              </div>
+            )}
+          </article>
+        );
+
+      case 'worldlines':
+        return (
+          <article
+            key={project.id}
+            className="luxury-card rounded-[2rem] p-6 md:col-span-7 flex flex-col justify-between group reveal-on-scroll"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              {/* Info Column */}
+              <div className="lg:col-span-7 space-y-4">
+                <span className="section-kicker text-[0.65rem] tracking-[0.25em]">Static Content Publishing</span>
+                <h3 className="project-title font-display text-2xl text-paper font-bold group-hover:text-brass transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-sm leading-7 text-paper/75">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, idx) => (
+                    <span key={idx} className="rounded-full border border-white/5 bg-white/5 px-2.5 py-0.5 text-[0.6rem] uppercase tracking-[0.15em] text-sand/80">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-2 pt-4 border-t border-white/5">
+                  <button
+                    onClick={() => toggleInsight(project.id)}
+                    className="rounded-full border border-paper/15 bg-paper/6 px-4 py-2 text-[0.62rem] uppercase tracking-[0.18em] text-sand/80 hover:bg-white/10 transition-colors font-semibold"
+                  >
+                    {hasInsight ? 'Hide Details' : 'Insights'}
+                  </button>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-center text-xs text-paper/85 hover:bg-white/10 transition-colors font-semibold"
+                    >
+                      LinkedIn Post
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Graphic Mockup */}
+              <div className="lg:col-span-5 h-44 rounded-[1.5rem] bg-gradient-to-br from-ink to-dark border border-white/5 p-4 flex flex-col justify-between overflow-hidden relative">
+                <div className="flex items-center justify-between text-[0.5rem] text-sand/50 uppercase tracking-widest font-semibold">
+                  <span>Quarto Engine</span>
+                  <span className="text-brass">GitHub Pages</span>
+                </div>
+                <div className="space-y-1.5 my-2">
+                  <div className="h-4 w-full rounded bg-white/5 border border-white/10 flex items-center justify-between px-2 text-[0.45rem] text-sand/50 font-mono">
+                    <span>index.qmd → HTML compile</span>
+                    <span className="text-ember font-bold">100%</span>
+                  </div>
+                  <div className="h-4 w-11/12 rounded bg-white/5 border border-white/10 flex items-center justify-between px-2 text-[0.45rem] text-sand/50 font-mono">
+                    <span>linear-alg.ipynb → HTML</span>
+                    <span className="text-ember font-bold">100%</span>
+                  </div>
+                </div>
+                <div className="text-[0.45rem] font-mono text-sand/40 border-t border-white/5 pt-1.5 flex items-center">
+                  <span>[Compilation finished successfully]</span>
+                </div>
+              </div>
+            </div>
+
+            {hasInsight && insight && (
+              <div className="mt-6 p-4 rounded-2xl border border-white/10 bg-white/5 text-xs leading-6 text-paper/80 space-y-2 animate-fade-in">
+                <p><span className="text-brass font-bold">Problem:</span> {insight.problem}</p>
+                <p><span className="text-brass font-bold">Approach:</span> {insight.approach}</p>
+                <p><span className="text-brass font-bold">Outcome:</span> {insight.outcome}</p>
+              </div>
+            )}
+          </article>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <section id="projects" className="py-12 bg-transparent">
+      <div className="container-wide">
+        <div className="mb-12 reveal-on-scroll">
+          <p className="section-kicker mb-4 text-xs md:text-sm">Selected work / Portals / Embedded systems</p>
+          <h2 className="section-title text-4xl md:text-6xl text-gradient">Featured Projects</h2>
+          <p className="mt-4 max-w-xl text-paper/70">
+            A showcase of engineering solutions combining AI concepts, web architecture, and IoT systems. Click 'Insights' on any card to view the problem-solving metrics.
+          </p>
+        </div>
+
+        {/* Bento Grid: 12 Columns layout on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+          {portfolioData.projects.map((project) => getProjectCard(project))}
         </div>
       </div>
     </section>

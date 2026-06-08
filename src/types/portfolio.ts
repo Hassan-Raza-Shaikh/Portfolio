@@ -34,6 +34,7 @@ export interface Certification {
   issuer: string;
   date: string;
   url?: string;
+  highlights?: string[];
 }
 
 export interface SocialLink {

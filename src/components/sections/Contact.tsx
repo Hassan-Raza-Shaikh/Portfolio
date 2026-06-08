@@ -1,36 +1,14 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { useRef, useState } from 'react';
 import { portfolioData } from '@/lib/portfolioData';
 import Motif from '@/components/common/Motif';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
-
-  useEffect(() => {
-    if (formRef.current) {
-      const inputs = formRef.current.querySelectorAll('input, textarea, button');
-
-      gsap.from(inputs, {
-        opacity: 0,
-        y: 20,
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: formRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
-        },
-        duration: 0.6,
-      });
-    }
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,27 +45,30 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32 bg-gradient-to-b from-dark via-ink to-dark">
+    <section id="contact" className="py-12 bg-transparent">
       <div className="container-wide">
-        <p className="section-kicker mb-4 text-center text-xs md:text-sm">Contact / Collaboration / Availability</p>
-        <h2 data-heading-reveal="words" className="section-title text-center text-4xl md:text-6xl mb-8 text-gradient">
-          Let's Work Together
-        </h2>
-        <p className="mx-auto mb-16 max-w-2xl text-center text-paper/70">
-          Have a question about my work, want to collaborate on AI or IoT projects, or just want to connect? Drop a message below and I'll get back to you.
-        </p>
+        <div className="mb-12 text-center reveal-on-scroll">
+          <p className="section-kicker mb-4 text-xs md:text-sm">Contact / Collaboration / Availability</p>
+          <h2 className="section-title text-4xl md:text-6xl mb-6 text-gradient">
+            Let's Work Together
+          </h2>
+          <p className="mx-auto max-w-2xl text-paper/70">
+            Have a question about my work, want to collaborate on AI or IoT projects, or just want to connect? Drop a message below and I'll get back to you.
+          </p>
+        </div>
 
-        <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+        {/* Social Links Cards */}
+        <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3 reveal-on-scroll">
           {/* Email */}
           <a
             href={`mailto:${portfolioData.email}`}
-            className="luxury-card group rounded-[1.75rem] p-6 text-center transition-all duration-300 hover:-translate-y-1"
+            className="luxury-card group rounded-[2rem] p-6 text-center transition-all duration-300"
           >
-            <div className="mx-auto mb-3 h-12 w-12 text-sand/75">
-              <Motif variant="crest" className="h-full w-full" />
+            <div className="mx-auto mb-4 h-12 w-12 text-accent/70 group-hover:scale-105 transition-transform">
+              <Motif variant="crest" className="h-full w-full animate-pulse" />
             </div>
-            <h3 className="mb-1 font-display text-2xl text-paper transition-colors group-hover:text-brass">Email</h3>
-            <p className="break-all text-sm text-sand/70">{portfolioData.email}</p>
+            <h3 className="mb-2 font-display text-2xl text-paper group-hover:text-accent transition-colors font-bold">Email</h3>
+            <p className="break-all text-xs text-sand/65 font-mono">{portfolioData.email}</p>
           </a>
 
           {/* LinkedIn */}
@@ -95,13 +76,13 @@ export default function Contact() {
             href={portfolioData.socials[1]?.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="luxury-card group rounded-[1.75rem] p-6 text-center transition-all duration-300 hover:-translate-y-1"
+            className="luxury-card luxury-card-green group rounded-[2rem] p-6 text-center transition-all duration-300"
           >
-            <div className="mx-auto mb-3 h-12 w-12 text-sand/75">
-              <Motif variant="orbit" className="h-full w-full" />
+            <div className="mx-auto mb-4 h-12 w-12 text-ember/70 group-hover:scale-105 transition-transform">
+              <Motif variant="orbit" className="h-full w-full animate-pulse" />
             </div>
-            <h3 className="mb-1 font-display text-2xl text-paper transition-colors group-hover:text-brass">LinkedIn</h3>
-            <p className="text-sm text-sand/70">Connect with me</p>
+            <h3 className="mb-2 font-display text-2xl text-paper group-hover:text-ember transition-colors font-bold">LinkedIn</h3>
+            <p className="text-xs text-sand/65">Connect with me</p>
           </a>
 
           {/* GitHub */}
@@ -109,22 +90,22 @@ export default function Contact() {
             href={portfolioData.socials[0]?.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="luxury-card group rounded-[1.75rem] p-6 text-center transition-all duration-300 hover:-translate-y-1"
+            className="luxury-card luxury-card-blue group rounded-[2rem] p-6 text-center transition-all duration-300"
           >
-            <div className="mx-auto mb-3 h-12 w-12 text-sand/75">
-              <Motif variant="pulse" className="h-full w-full" />
+            <div className="mx-auto mb-4 h-12 w-12 text-jade/70 group-hover:scale-105 transition-transform">
+              <Motif variant="pulse" className="h-full w-full animate-pulse" />
             </div>
-            <h3 className="mb-1 font-display text-2xl text-paper transition-colors group-hover:text-brass">GitHub</h3>
-            <p className="text-sm text-sand/70">Check my code</p>
+            <h3 className="mb-2 font-display text-2xl text-paper group-hover:text-jade transition-colors font-bold">GitHub</h3>
+            <p className="text-xs text-sand/65">Check my code</p>
           </a>
         </div>
 
         {/* Contact Form */}
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto reveal-on-scroll">
           <form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="luxury-card space-y-6 rounded-[2rem] p-8"
+            className="luxury-card space-y-6 rounded-[2rem] p-6 md:p-8"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <input
@@ -132,14 +113,14 @@ export default function Contact() {
                 name="name"
                 placeholder="Your Name"
                 required
-                className="rounded-xl border border-paper/10 bg-paper/6 px-4 py-3 text-paper placeholder:text-sand/35 focus:outline-none focus:border-brass/45 transition-colors"
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-paper placeholder:text-sand/30 focus:outline-none focus:border-accent/40 transition-colors"
               />
               <input
                 type="email"
                 name="email"
                 placeholder="Your Email"
                 required
-                className="rounded-xl border border-paper/10 bg-paper/6 px-4 py-3 text-paper placeholder:text-sand/35 focus:outline-none focus:border-brass/45 transition-colors"
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-paper placeholder:text-sand/30 focus:outline-none focus:border-accent/40 transition-colors"
               />
             </div>
 
@@ -148,28 +129,28 @@ export default function Contact() {
               name="subject"
               placeholder="Subject"
               required
-              className="w-full rounded-xl border border-paper/10 bg-paper/6 px-4 py-3 text-paper placeholder:text-sand/35 focus:outline-none focus:border-brass/45 transition-colors"
+              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-paper placeholder:text-sand/30 focus:outline-none focus:border-accent/40 transition-colors"
             />
 
             <textarea
               name="message"
               placeholder="Your Message"
-              rows={6}
+              rows={5}
               required
-              className="w-full resize-none rounded-xl border border-paper/10 bg-paper/6 px-4 py-3 text-paper placeholder:text-sand/35 focus:outline-none focus:border-brass/45 transition-colors"
+              className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-paper placeholder:text-sand/30 focus:outline-none focus:border-accent/40 transition-colors"
             />
 
             <input type="hidden" name="_subject" value="New Portfolio Contact Submission" />
 
-            {/* Status Message */}
+            {/* Status Messages */}
             {submitStatus === 'success' && (
-              <div className="rounded-xl border border-jade/40 bg-jade/10 p-4 text-sm text-jade">
+              <div className="rounded-xl border border-ember/40 bg-ember/10 p-4 text-xs text-ember font-medium animate-fade-in">
                 ✓ Message sent successfully! I'll get back to you soon.
               </div>
             )}
 
             {submitStatus === 'error' && (
-              <div className="rounded-xl border border-ember/40 bg-ember/10 p-4 text-sm text-ember">
+              <div className="rounded-xl border border-accent/40 bg-accent/10 p-4 text-xs text-accent font-medium animate-fade-in">
                 ✗ Something went wrong. Please try again.
               </div>
             )}
@@ -177,7 +158,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="magnetic-button cta-button pressable w-full rounded-full py-3 font-semibold uppercase tracking-[0.18em] transition-all disabled:cursor-not-allowed disabled:opacity-50"
+              className="magnetic-button cta-button pressable w-full rounded-full py-3 text-xs font-bold uppercase tracking-[0.2em] transition-all disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
