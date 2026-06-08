@@ -221,23 +221,23 @@ body > * {
 /* Neon highlights on hover */
 .luxury-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 59, 112, 0.35);
-  box-shadow: 0 15px 40px -10px rgba(255, 59, 112, 0.15), 
-              0 0 0 1px rgba(255, 59, 112, 0.15), 
+  border-color: rgba(255, 51, 102, 0.35);
+  box-shadow: 0 15px 40px -10px rgba(255, 51, 102, 0.15), 
+              0 0 0 1px rgba(255, 51, 102, 0.15), 
               0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
 .luxury-card-green:hover {
-  border-color: rgba(0, 255, 135, 0.35);
-  box-shadow: 0 15px 40px -10px rgba(0, 255, 135, 0.15), 
-              0 0 0 1px rgba(0, 255, 135, 0.15), 
+  border-color: rgba(255, 204, 0, 0.35);
+  box-shadow: 0 15px 40px -10px rgba(255, 204, 0, 0.15), 
+              0 0 0 1px rgba(255, 204, 0, 0.15), 
               0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
 .luxury-card-blue:hover {
-  border-color: rgba(14, 165, 233, 0.35);
-  box-shadow: 0 15px 40px -10px rgba(14, 165, 233, 0.15), 
-              0 0 0 1px rgba(14, 165, 233, 0.15), 
+  border-color: rgba(0, 102, 255, 0.35);
+  box-shadow: 0 15px 40px -10px rgba(0, 102, 255, 0.15), 
+              0 0 0 1px rgba(0, 102, 255, 0.15), 
               0 20px 50px rgba(0, 0, 0, 0.6);
 }
 

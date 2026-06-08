@@ -48,7 +48,7 @@ export default function ProcessRail() {
             <article
               key={step.id}
               className={`luxury-card flex flex-col justify-between rounded-[2rem] p-6 md:p-8 group reveal-on-scroll ${
-                step.id === '02' || step.id === '03' ? 'luxury-card-green' : ''
+                step.id === '02' ? 'luxury-card-green' : step.id === '03' ? 'luxury-card-blue' : ''
               }`}
             >
               <div className="flex items-center justify-between mb-6">
