@@ -13,10 +13,10 @@ const config: Config = {
         ink: '#0d0b12',
         paper: '#f5f5fa',
         sand: '#cbcbd6',
-        brass: '#ff3b70',      // Vibrant pink mapping
-        ember: '#00ff87',      // Neon lime mapping
-        jade: '#0ea5e9',       // Sky blue mapping
-        accent: '#ff3b70',
+        brass: '#FF3366',      // Neon Red mapping
+        ember: '#FFCC00',      // Golden/Neon Yellow mapping
+        jade: '#0066FF',       // Electric Blue mapping
+        accent: '#FF3366',
         surface: 'rgba(255, 255, 255, 0.03)',
         surfaceStrong: 'rgba(255, 255, 255, 0.07)',
       },
